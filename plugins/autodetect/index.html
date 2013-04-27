@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="favicon.png" />
+<title>Autodetect ▲ Prism plugins</title>
+<base href="../.." />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="prism.css" data-noprefix />
+<script src="prefixfree.min.js"></script>
+
+<script>var _gaq = [['_setAccount', 'UA-33746269-1'], ['_trackPageview']];</script>
+<script src="http://www.google-analytics.com/ga.js" async></script>
+</head>
+<body>
+
+<header>
+	<div class="intro" data-src="templates/header-plugins.html" data-type="text/html"></div>
+
+	<h2>Autodetect</h2>
+	<p>Detects the languages for code blocks not marked with any specific language.</p>
+</header>
+
+<section>
+	<h1>How to use</h1>
+	<p>Just include this plugin, everything would happen automagically for all your code blocks which are not marked with any language.</p>
+</section>
+
+<section>
+	<h1>Examples</h1>
+
+	<h2>Different markup</h2>
+
+	<p>code.language-css</p>
+	<code>p { color: red; }</code>
+
+	<p>pre.language-css > code</p>
+	<pre><code>p { color: red; }</code></pre>
+
+	<p>pre > code.language-css</p>
+	<pre><code>p { color: red; }</code></pre>
+
+	<p>pre.language-css > code.language-*</p>
+	<pre><code>p { color: red; }</code></pre>
+
+	<p>code.lang-css</p>
+	<code>p { color: red; }</code>
+
+	<p>pre.lang-css > code</p>
+	<pre><code>p { color: red; }</code></pre>
+
+	<p>pre > code</p>
+	<p>No language, should inherit .language-markup</p>
+	<pre><code>&lt;p>hi!&lt;/p></code></pre>
+
+	<p>code.language-*</p>
+	<p>No language, should inherit .language-markup</p>
+	<code>&lt;p>hi!&lt;/p></code>
+
+	<p>code.language-none</p>
+	<p>Should not be highlighted.</p>
+	<code class="language-none">&lt;p>hi!&lt;/p></code>
+
+	<h2>Markup</h2>
+
+	<p>Empty tag</p>
+	<pre><code>&lt;p>&lt;/p></code></pre>
+
+	<p>Tag that spans multiple lines</p>
+	<pre><code>&lt;p
+>hello!
+&lt;/p></code></pre>
+
+	<p>Name-attribute pair</p>
+	<pre><code>&lt;p>&lt;/p></code></pre>
+
+	<p>Name-attribute pair without quotes</p>
+	<pre><code>&lt;p class=prism>&lt;/p></code></pre>
+
+	<p>Attribute without value</p>
+	<pre><code>&lt;p data-foo>&lt;/p></code></pre>
+	<pre><code>&lt;p data-foo >&lt;/p></code></pre>
+
+	<p>Namespaces</p>
+	<pre><code>&lt;html:p foo:bar="baz" foo:weee>&lt;/html:p></code></pre>
+
+	<p>XML prolog</p>
+	<pre><code>&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;svg>&lt;/svg></code></pre>
+
+	<p>DOCTYPE</p>
+	<pre><code>&lt;!DOCTYPE html>
+&lt;html>&lt;/html></code></pre>
+
+	<p>CDATA section</p>
+	<pre><code>&lt;ns1:description>&lt;![CDATA[
+  CDATA is &lt;not> magical.
+]]>&lt;/ns1:description></code></pre>
+
+	<p>Comment</p>
+	<pre><code>&lt;!-- I'm a comment -->
+And i'm not</code></pre>
+
+	<p>Entities</p>
+	<pre><code>&amp;amp; &amp;#x2665; &amp;#160; &amp;#x152;</code></pre>
+
+	<p>Embedded JS and CSS</p>
+	<pre><code>&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+	&lt;meta charset="utf-8" />
+	&lt;title>I can haz embedded CSS and JS&lt;/title>
+	&lt;style>
+		@media print {
+			p { color: red !important; }
+		}
+	&lt;/style>
+&lt;/head>
+&lt;body>
+	&lt;h1>I can haz embedded CSS and JS&lt;/h1>
+	&lt;script>
+	if (true) {
+		console.log('foo');
+	}
+	&lt;/script>
+
+&lt;/body>
+&lt;/html></code></pre>
+
+	<p>Invalid HTML</p>
+	<pre><code>&lt;l &lt;/ul></code></pre>
+
+	<p>Multi-line attribute values</p>
+	<pre><code>&lt;p title="foo
+bar
+baz"></code></pre>
+
+	<h2>CSS</h2>
+
+	<p>Empty rule</p>
+	<pre><code>*{} * {} p {}</code></pre>
+	<pre><code>ul,
+ol {}</code></pre>
+
+	<p>Simple rule</p>
+	<pre><code>p { color: red; }</code></pre>
+
+	<p>Important rule</p>
+	<pre><code>p { color: red !important; }</code></pre>
+
+	<p>@ rule</p>
+	<pre><code>@media screen and (min-width: 100px) {}</code></pre>
+
+	<p>Comment</p>
+	<pre><code>/* Simple comment here */</code></pre>
+
+	<p>String</p>
+	<pre><code>content: 'foo';</code></pre>
+
+	<p>URL</p>
+	<pre><code>content: url(foo.png);</code></pre>
+</pre>
+
+	<h2>JavaScript</h2>
+
+	<p>Variable assignment</p>
+	<pre><code>var foo = "bar", baz = 5;</code></pre>
+
+	<p>Operators</p>
+	<pre><code>(1 + 2 * 3)/4 >= 3 &amp;&amp; 4 &lt; 5 || 6 > 7</code></pre>
+
+	<p>Indented code</p>
+	<pre><code>if (true) {
+	while (true) {
+		doSomething();
+	}
+}</code></pre>
+
+	<p>Regex with slashes</p>
+	<pre><code>var foo = /([^/])\/(\\?.|\[.+?])+?\/[gim]{0,3}/g;</code></pre>
+
+	<p>Regex that ends with double slash</p>
+	<pre><code>var bar = /\/\*[\w\W]*?\*\//g;</code></pre>
+
+	<p>Single line comments &amp; regexes</p>
+	<pre><code>// http://lea.verou.me
+var comment = /\/\*[\w\W]*?\*\//g;</code></pre>
+
+	<p>Link in comment</p>
+	<pre><code>// http://lea.verou.me
+/* http://lea.verou.me */</code></pre>
+
+	<p>Nested strings</p>
+	<pre><code>var foo = "foo", bar = "He \"said\" 'hi'!"</code></pre>
+
+	<p>Strings inside comments</p>
+	<pre><code>// "foo"</code></pre>
+	<pre><code>/* "foo" */</code></pre>
+
+	<p>Strings with slashes</p>
+	<pre><code>env.content + '&lt;/' + env.tag + '>'</code></pre>
+	<pre><code>var foo = "/" + "/";</code></pre>
+
+	<p>Regex inside single line comment</p>
+	<pre><code>// hey, /this doesn’t fail!/ :D</code></pre>
+
+	<p>Two or more division operators on the same line</p>
+	<pre><code>var foo = 5 / 6 / 7;</code></pre>
+
+	<p>A division operator on the same line as a regex</p>
+	<pre><code>var foo = 1/2, bar = /a/g;</code></pre>
+	<pre><code>var foo = /a/, bar = 3/4;</code></pre>
+
+	<h2>Java</h2>
+
+	<p>Java Language Keywords</p>
+	<pre><code>
+abstract continue for        new       switch
+assert   default  goto       package   synchronized
+boolean  do       if         private   this
+break    double   implements protected throw
+byte     else     import     public    throws
+case     enum     instanceof return    transient
+catch    extends  int        short     try
+char     final    interface  static    void
+class    finally  long       strictfp  volatile
+const    float    native     super     while
+
+	</code></pre>
+
+	<p>Operators</p>
+	<pre><code>// postfix
+expr++ expr--
+// unary
+++expr --expr +expr -expr ~ !
+// multiplicative
+* / %
+// additive
++ -
+// shift
+<< >> >>>
+// relational
+< > <= >= instanceof
+// equality
+== !=
+// bitwise AND
+&
+// bitwise exclusive OR
+^
+// bitwise inclusive OR
+|
+// logical AND
+&&
+// logical OR
+||
+// ternary
+? :
+// assignment
+= += -= *= /= %= &= ^= |= <<= >>= >>>=
+	</code></pre>
+
+	<p>Simple class example</p>
+
+	<pre><code>package com.prismjs;
+
+import java.io.*;
+
+@SuppressWarnings("unchecked")
+public class PrismJS {
+
+	public static Integer test = 0;
+
+	/**
+	 * Javadoc style comment
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Let's create some variables
+		int numArgs = args.length;
+		Integer a = 0x1;
+		String test = "" + "Hello" + " \"World\"!";
+		double dvalue = 1.23;
+		int optest = 0;
+		optest += 321 - 45 * 1247 / 425 % 123;
+
+		/*
+		 * Multiline comment
+		 */
+		for (int i = 0; i < numArgs; i++) {
+			// Simple line comment
+			System.out.println("Arg value= " + args[i]);
+		}
+
+		do {
+			System.out.println("Do while ok!");
+		} while (false);
+	}
+}
+
+	</code></pre>
+	<p>As you can notice String keyword is not highlighted because it's not a Java language keyword (cf. <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html">Java Language Keywords</a>). The main reason is that String is not a primitive type such as <em>int</em> but a class type like <em>Integer</em>.</p>
+
+	<h2>Coffeescript</h2>
+
+	<p>Variable assignment</p>
+	<pre><code>foo = "bar"</code></pre>
+
+	<p>Operators</p>
+	<pre><code>(1 + 2 * 3)/4 >= 3 &amp;&amp; 4 &lt; 5 || 6 > 7</code></pre>
+
+	<p>Indented code</p>
+	<pre><code>if true
+	while true
+		doSomething()
+	</code></pre>
+
+	<p>Regex with slashes</p>
+	<pre><code>var foo = /([^/])\/(\\?.|\[.+?])+?\/[gim]{0,3}/g;</code></pre>
+
+	<p>Single line comments</p>
+	<pre><code># This is a comment</code></pre>
+
+	<p>Link in comment</p>
+	<pre><code># http://lea.verou.me
+###
+Block Comment
+### </code></pre>
+
+	<p>Nested strings</p>
+	<pre><code>var foo = "foo", bar = "He \"said\" 'hi'!"</code></pre>
+
+	<p>String inside comment</p>
+	<pre><code># "foo"</code></pre>
+
+
+	<p>Strings with slashes</p>
+	<pre><code>env.content + '&lt;/' + env.tag + '>'</code></pre>
+	<pre><code>var foo = "/" + "/";</code></pre>
+
+	<p>Two or more division operators on the same line</p>
+	<pre><code>foo = 5 / 6 / 7;</code></pre>
+
+	<p>A division operator on the same line as a regex</p>
+	<pre><code>foo = 1/2, bar = /a/g;</code></pre>
+	<pre><code>foo = /a/, bar = 3/4;</code></pre>
+
+	<p>A function</p>
+	<pre><code>
+_buttonClick: (a, b) ->
+	@hide()
+	</code></pre>
+
+	<p>An Object</p>
+	<pre><code>
+code = {
+	css: "Cascading Style Sheets"
+	cs: "CoffeeScript"
+}
+	</code></pre>
+
+		<p>Class Definition</p>
+	<pre><code>
+class CoffeeScript extends Prism.Javascript
+	</code></pre>
+</section>
+
+
+</section>
+
+<footer data-src="templates/footer.html" data-type="text/html"></footer>
+
+<script src="prism.js"></script>
+<script src="plugins/autodetect/prism-autodetect.js"></script>
+<script src="utopia.js"></script>
+<script src="code.js"></script>
+
+
+</body>
+</html>
