@@ -395,6 +395,12 @@ Prism.hooks.add('wrap', function(env) {
 	}
 });
 
+// Aliases for markup for more convenient usage of classes
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+Prism.languages.xml = Prism.languages.markup;
+Prism.languages.xsl = Prism.languages.markup;
+
 /* **********************************************
      Begin prism-css.js
 ********************************************** */
@@ -425,6 +431,13 @@ if (Prism.languages.markup) {
 		}
 	});
 }
+
+// Aliases for css for more convenient usage of classes
+Prism.languages.sass = Prism.languages.css;
+Prism.languages.scss = Prism.languages.css;
+Prism.languages.less = Prism.languages.css;
+Prism.languages.styl = Prism.languages.css;
+Prism.languages.stylus = Prism.languages.css;
 
 /* **********************************************
      Begin prism-clike.js
